@@ -9,5 +9,6 @@ const endPoints = {
   products: {
     getList: (limit, offset) => `${API}/api/${VERSION}/products?limit${limit}&offset=${offset}`,
     getProduct: (id) => `${API}/api/${VERSION}/products/${id}`,
+    postProduct=
   },
 };
