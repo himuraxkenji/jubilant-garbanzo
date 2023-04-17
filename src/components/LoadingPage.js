@@ -1,15 +1,26 @@
+import { ModalError } from '@common/ModalError';
 import { LockClosedIcon } from '@heroicons/react/24/solid';
+import { useAuth } from '@hooks/useAuth';
 import { useRef } from 'react';
 
 export default function LoginPage() {
   const emailRef = useRef(null);
   const passwordRef = useRef(null);
+  const auth = useAuth();
 
   const submitHandler = (event) => {
     event.preventDefault();
     const email = emailRef.current.value;
     const password = passwordRef.current.value;
-    console.log(email, password);
+    auth.signIn(email, password).then(
+      () => {
+        console.log('Login success');
+      },
+      (message) => {
+        console.log(message);
+        auth.setError('Invalid username or password');
+      }
+    );
   };
 
   return (
@@ -80,6 +91,7 @@ export default function LoginPage() {
                 </span>
                 Sign in
               </button>
+              {auth.error ? <ModalError /> : null}
             </div>
           </form>
         </div>
