@@ -11,7 +11,7 @@ const endpoints = {
     getProducts: (limit, offset) => `${API}/api/${VERSION}/products?limit=${limit}&offset=${offset}`,
     getProduct: (id) => `${API}/api/${VERSION}/products/${id}`,
     postProduct: `${API}/api/${VERSION}/products`,
-    putProduct: (id) => `${API}/api/${VERSION}/products/${id}`,
+    putProduct: (id) => `${API}/api/${VERSION}/products/${id}/`,
     deleteProduct: (id) => `${API}/api/${VERSION}/products/${id}`,
   },
   users: {
